@@ -1,8 +1,8 @@
-# Tutorial 0 - NEMO version 5.0.2 Biogeochemistry Demonstrator with ORCA2
+# Tutorial 1 - Biogeochemistry Demo with ORCA2 (NEMO v5.0.2)
 
 ## Description
 
-This test case provides a demonstration of PISCES, the biogeochemical (BGC) model included within NEMO V5.0, over the full global ocean. Provided with this test case are scripts for determining the dominant phytoplankton and zooplankton at each grid point in the global ocean for two reference runs, one based on the PISCES (P4Z) configuration and one based on the PISCES QUOTA (P5Z) configuration. 
+This test case provides a demonstration of PISCES, the biogeochemical (BGC) model included within NEMO V5.0.2, over the full global ocean at 2° horizontal resolution. Provided with this test case are scripts for determining the dominant phytoplankton and zooplankton at each grid point in the global ocean for two reference runs, one based on the PISCES (P4Z) configuration and one based on the PISCES QUOTA (P5Z) configuration. 
 
 This demonstrator helps to educate new users of NEMO interested in running with BGC on the changes necessary to run the different configurations of PISCES. Comparison of the outputs from each run also allows to explore the effect of having a higher complexity model (through the additional phytoplankton included within PISCES QUOTA) and the impact this has on the dominance of each plankton type.
 
@@ -25,10 +25,7 @@ The PISCES QUOTA model builds upon the standard operational version of PISCES to
 ## Getting Started
 ### Dependencies
 
-The following dependencies are required for this demonstrator:
-* NetCDF package installed on your HPC
-* XIOS package installed on your HPC
-* An arch file for your HPC (which sets the paths for XIOS, NetCDF, and the compiler)
+The following dependencies are required for this demonstrator (in addition to the pre-requisited mentioned in Tutorial 0 - NEMO_basics):
 * An install of ImageMagick (for converting images to animations)
 * An install of Python version 3.8 or above
 * Installs of the following Python packages:
@@ -42,7 +39,7 @@ To be able to run the demonstrator, the directory `PISCES_FILES` has the `nameli
 * `file_def_nemo_pisces.xml` with the required variables for each reference run
 
 We also include the following files for post-processing of the outputs in the directory `SCRIPTS`:
-* A `mesh_mask_v5.nc` file for use with NEMO V5.0
+* A `mesh_mask_v5.nc` file for use with NEMO V5.0.2
 * `models.csv` which lists details for the models we are comparing
 * A shell script `compare.sh` to visualise the comparison of the dominant species for each run
 * Python scripts `dominant-phyto.py` and `dominant-zoo.py` to calculate the dominant phyto- and zooplankton, respectively, at each grid point
@@ -51,17 +48,13 @@ We also include the following files for post-processing of the outputs in the di
 
 ### Installing
 
-Details for installing NEMO V5.0 can be found [here](https://sites.nemo-ocean.io/user-guide/install.html#download-and-install-the-nemo-code). The suggested method is to clone the repository using the command
-```
-git clone --branch 5.0 https://forge.nemo-ocean.eu/nemo/nemo.git nemo_5.0
-```
-but it is also possible to download a tarball or zipfile of the code.
+First follow the instructions on dowlooading and compiling NEMO and XIOS from the NEMO_basics tutorial.
 
-Once the code has been downloaded, we need to compile the model. The `arch` directory contains the settings for compiling the model, together with several example architecture files. You can use these example files to create your own architecture file (which we will call simply `arch.fcm`) with the relevant paths for the XIOS and NetCDF packages on your computer or HPC environment.
+This demonstrator is based on the [ORCA2_ICE_PISCES](https://sites.nemo-ocean.io/user-guide/cfgs.html#orca2-ice-pisces) reference configuration. Build your new `BGC_DEMO` configuration by duplicating the reference configuration with the command. (If you used the auto build functionality to automatically build your arch file them MY_COMPUTER would simply be "auto".)
 
-Our demonstrator is based on the [ORCA2_ICE_PISCES](https://sites.nemo-ocean.io/user-guide/cfgs.html#orca2-ice-pisces) reference configuration. We build our new `BGC_DEMO` configuration by duplicating the reference configuration with the command
 ```
-./makenemo –n 'BGC_DEMO' -r 'ORCA2_ICE_PISCES' -m arch.fcm
+./makenemo -m MY_COMPUTER -r ORCA2_ICE_PISCES -n BGC_DEMO -j 8 --add_key key_xios3
+
 ```
 
 ### Running each configuration of PISCES
