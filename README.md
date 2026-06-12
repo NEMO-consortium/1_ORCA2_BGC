@@ -1,7 +1,4 @@
-# About
-
-NEMO Version 5.0 Biogeochemistry Demonstrator
-
+# Tutorial 0 - NEMO version 5.0.2 Biogeochemistry Demonstrator with ORCA2
 
 ## Description
 
