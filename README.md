@@ -45,6 +45,7 @@ We also include the following files for post-processing of the outputs in the di
 * Python scripts `dominant-phyto.py` and `dominant-zoo.py` to calculate the dominant phyto- and zooplankton, respectively, at each grid point
 * A python script `summary.py` to generate a global average summary of each plankton type for comparison
 
+In your work directory, create the directory `BGC_DEMO_FORCINGS` and download the files described above either from the Github repositry using git clone or from the corresponding Zenodo directory using wget.
 
 ### Installing
 
@@ -59,7 +60,14 @@ This demonstrator is based on the [ORCA2_ICE_PISCES](https://sites.nemo-ocean.io
 
 ### Running each configuration of PISCES
 
-In your work directory (which we will refer to as simply `$WORK`), create the directory `BGC_DEMO_RUN` for running the demonstrator. You should then create two additional directories `$WORK/BGC_DEMO_RUN/P4Z` and `$WORK/BGC_DEMO_RUN/P5Z`, where we will run each configuration of PISCES. Copy the files from `BGC_DEMO_FILES` into each directory, and then copy the files specific to each configuration:
+>>>>> STOP Here, already mentioned the files to download into a separate forcings folder. 
+
+
+In your work directory (which we will refer to as simply `$WORK`), create the directory `BGC_DEMO_FORCINGS` and clone all the forcing files needed to run this demonstrator
+
+https://github.com/NEMO-consortium/1_ORCA2_BGC.git
+
+. You should then create two additional directories `$WORK/BGC_DEMO_RUN/P4Z` and `$WORK/BGC_DEMO_RUN/P5Z`, where we will run each configuration of PISCES. Copy the files from `BGC_DEMO_FILES` into each directory, and then copy the files specific to each configuration:
 ```
 cp BGC_DEMO/PISCES_FILES/* $WORK/BGC_DEMO_RUN/P4Z/
 cp BGC_DEMO/P4Z_FILES/* $WORK/BGC_DEMO_RUN/P4Z/
