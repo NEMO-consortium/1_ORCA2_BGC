@@ -89,10 +89,10 @@ Then for `EXP_P4Z` experiment, you need to rename `namelist_top_P4Z` to `namelis
 
 Finally, link all the netcdf forcing files into both experiment directories.
 ```
-cd EXP_P4Z/
-ln -sf PATH_to_ORCA2_ICE_v5.0.0/* .
-ln -sf PATH_to_ORCA2_INPUTS_PISCES_v5.0.0/* .
-cd ..
+ln -sf PATH_to_ORCA2_ICE_v5.0.0/* EXP_P4Z/.
+ln -sf PATH_to_ORCA2_INPUTS_PISCES_v5.0.0/* EXP_P4Z/.
+ln -sf PATH_to_ORCA2_ICE_v5.0.0/* EXP_P5Z/.
+ln -sf PATH_to_ORCA2_INPUTS_PISCES_v5.0.0/* EXP_P5Z/.
 ```
 
 >>>>> ADD a paragraph on namelist management. <<<<<<
