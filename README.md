@@ -68,20 +68,22 @@ This demonstrator is based on the [ORCA2_ICE_PISCES](https://sites.nemo-ocean.io
 You need to go in your `BGC_DEMO` directory:
 ```cd cfgs/BGC_DEMO```
 
-You should then create two additional directories `EXP_P4Z` and `EXP_P5Z`, where we will run each configuration of PISCES. Copy the files from `BGC_DEMO_FILES` into each directory, and then copy the files specific to each configuration:
-
->>>>> TO BE UPDATED => new zip with only the namelist*_cfg that are empty
-
+You should then create two additional directories `EXP_P4Z` and `EXP_P5Z`, where we will run each configuration of PISCES.
 ```
-cp PATH_to_BGC_DEMO_FORCINGS/namelist_* EXP_P4Z/.
-cp PATH_to_BGC_DEMO_FORCINGS/file_def_nemo_pisces.xml EXP_P4Z/.
-cp PATH_to_BGC_DEMO_FORCINGS/namelist_* EXP_P5Z/.
-cp PATH_to_BGC_DEMO_FORCINGS/file_def_nemo_pisces.xml EXP_P5Z/.
+cp EXP00 EXP_P4Z
+cp EXP00 EXP_P5Z
 ```
 
-Then for `EXP_P4Z` experiments, you need to rename `namelist_top_P4Z` to `namelist_top_cfg`, and for `EXP_P5Z` experiments, you need to rename `namelist_top_P5Z` to `namelist_top_cfg`.
+Copy the files from `BGC_DEMO_FILES` into each directory:
 
->>>>> ADD a paragraph on namelist management.
+```
+cp PATH_to_BGC_DEMO_FORCINGS/* EXP_P4Z/.
+cp PATH_to_BGC_DEMO_FORCINGS/* EXP_P5Z/.
+```
+
+Then for `EXP_P4Z` experiment, you need to rename `namelist_top_P4Z` to `namelist_top_cfg`, and for `EXP_P5Z` experiment, you need to rename `namelist_top_P5Z` to `namelist_top_cfg`.
+
+>>>>> ADD a paragraph on namelist management. <<<<<<
 
 The version of model to use is defined in the namelist. We explain here how to activate the different options between the two configurations. 
 
@@ -126,7 +128,11 @@ Take care of the `/>` at the end of the first line and `</file_group>` to close 
 
 Similarly activate in EXP_P5Z by setting ln_p5z to .true. (and `ln_p4z` to `.false.`) and set the numbers to 40.
 
-For P5Z, as for P4Z, in the file description with output at Xd frequency (`toto`), add:
+For P5Z, as for P4Z, we need to add extra outputs in `file_def_nemo-pisces.xml`. In the file description with output at 7d frequency. To do this, you need to replace:
+```
+   <file_group id="7d"  output_freq="7d"  output_level="10" enabled=".TRUE."/>  <!-- 7d files -->
+```
+by:
 ```
    <file_group id="7d"  output_freq="7d"  output_level="10" enabled=".TRUE.">  <!-- 7d files -->
      <file id="file1" name_suffix="_ptrc_T" description="pisces sms variables" >
