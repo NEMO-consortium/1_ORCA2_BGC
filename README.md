@@ -81,7 +81,7 @@ Then for `EXP_P4Z` experiment, you need to rename `namelist_top_P4Z` to `namelis
 
 The version of model to use is defined in the namelist. We explain here how to activate the different options between the two configurations. 
 
-- PISCES model (P4Z):
+**PISCES model (P4Z)**
 
 To activate PISCES (P4Z) set `ln_p4z` to `.true.` in P4Z `namelist_pisces_cfg` by replacing this empty block as follows:
 ```
@@ -121,7 +121,7 @@ by:
 ```
 Take care of the `/>` at the end of the first line and `</file_group>` to close the file group.
 
-- PISCES QUOTA model (P5Z)
+**PISCES QUOTA model (P5Z)**
 
 Similarly activate in EXP_P5Z by setting ln_p5z to .true. (and `ln_p4z` to `.false.`) and set the numbers to 40.
 
