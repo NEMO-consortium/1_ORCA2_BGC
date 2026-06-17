@@ -67,11 +67,11 @@ You need to go in your `BGC_DEMO` directory:
 
 You should then create two additional directories `EXP_P4Z` and `EXP_P5Z`, where we will run each configuration of PISCES. Copy the files from `BGC_DEMO_FILES` into each directory, and then copy the files specific to each configuration:
 ```
-ln -sf PATH_to_BGC_DEMO_FORCINGS/PISCES_FILES/* EXP_P4Z/.
-ln -sf PATH_to_BGC_DEMO_FORCINGS/P4Z_FILES/* EXP_P4Z/.
+cp -r PATH_to_BGC_DEMO_FORCINGS/PISCES_FILES/* EXP_P4Z/.
+cp -r PATH_to_BGC_DEMO_FORCINGS/P4Z_FILES/* EXP_P4Z/.
 
-ln -sf PATH_to_BGC_DEMO_FORCINGS/PISCES_FILES/* EXP_P5Z/.
-ln -sf PATH_to_BGC_DEMO_FORCINGS/P5Z_FILES/* EXP_P5Z/.
+cp -r PATH_to_BGC_DEMO_FORCINGS/PISCES_FILES/* EXP_P5Z/.
+cp -r PATH_to_BGC_DEMO_FORCINGS/P5Z_FILES/* EXP_P5Z/.
 ```
 
 We note here the main differences between the two configurations. The version of model to use is set in `namelist_pisces_ref`:
