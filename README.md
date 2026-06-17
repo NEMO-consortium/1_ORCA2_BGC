@@ -160,12 +160,18 @@ by:
      </file>
    </file_group>
 ```
+>>>> STOP HERE need to put instruction for iodef and xiosserver ...
+>>>> 
+Now you can run the model. To run the model, link the executable into each run directory and then submit. Below the steps only for EXP_P4Z. Similar steps apply for EXP_P5Z.
 
-Now you can run the model. To run the model, copy the executable into each run directory and then submit:
+- First go in EXP_P4Z, link nemo, :
 ```
-cp nemo-5.0/cfgs/BGC_DEMO/BLD/bin/nemo.exe .
-./nemo.exe
+cd EXP_P4Z
+ln -sf nemo-5.0/cfgs/BGC_DEMO/BLD/bin/nemo.exe nemo
 ```
+
+- 
+
 The model runs over the full global ocean for one year (1948) with a timestep of `5400s` and outputs at a 7-day time frequency. When the model has finished, it will output a file `ORCA2_7d_19480101_19481231_ptrc_T.nc` with the concentrations for each phyto- and zooplankton.
 
 
