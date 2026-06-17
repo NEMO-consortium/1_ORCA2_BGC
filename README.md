@@ -59,7 +59,10 @@ This demonstrator is based on the [ORCA2_ICE_PISCES](https://sites.nemo-ocean.io
 
 ### Running each configuration of PISCES
 
->>>>> STOP Here, already mentioned the files to download into a separate forcings folder. 
+>>>>> STOP Here, already mentioned the files to download into a separate forcings folder.
+>>>>> Different files are namelist_*cfg
+>>>>> All the others are the same => need to purge the zip file by keeping only the different namelist
+>>>>> 
 
 
 You need to go in your `BGC_DEMO` directory:
