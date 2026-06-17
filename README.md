@@ -174,18 +174,24 @@ ln -sf nemo-5.0/cfgs/BGC_DEMO/BLD/bin/nemo.exe nemo
 Followd steps in basics tutorial to make changes to iodef:
 ```
   <context id="xios" >
+
       <variable_definition>
+
           <variable id="info_level"                type="int">10</variable>
           <variable id="using_server"              type="bool">true</variable>
-          <variable id="oasis_codes_id"            type="string" >oceanx</variable>
+          <variable id="using_oasis"               type="bool">false</variable>
+
       </variable_definition>
   </context>
+
 ```
 Copy across xios_server.exe
 
 link BGC_DEMO/BLD/bin/nemo.exe nemo
 
 Submit job and it fails :(
+
+File ./restart.nc* not found
 
 - 
 
