@@ -101,7 +101,11 @@ and set the number of tracers to use to 24 for the run in `namelist_top_cfg` by 
    jp_bgc        =  24
 ```
 
-Finally, we need to add extra outputs in `file_def_nemo-pisces.xml`. In the file description with output at Xd frequency (`toto`), add:
+Finally, we need to add extra outputs in `file_def_nemo-pisces.xml`. In the file description with output at 7d frequency. To do this, you need to replace:
+```
+   <file_group id="7d"  output_freq="7d"  output_level="10" enabled=".TRUE."/>  <!-- 7d files -->
+```
+by:
 ```
    <file_group id="7d"  output_freq="7d"  output_level="10" enabled=".TRUE.">  <!-- 7d files -->
      <file id="file1" name_suffix="_ptrc_T" description="pisces sms variables" >
@@ -111,11 +115,12 @@ Finally, we need to add extra outputs in `file_def_nemo-pisces.xml`. In the file
        <field field_ref="ZOO"                             />
        <field field_ref="ZOO2"                            />
      </file>
-   </file_group>```
+   </file_group>
+```
+Take care of the `/>` at the end of the first line and `</file_group>` to close the file group.
 
 - PISCES QUOTA model (P5Z)
 Similarly activate in EXP_P5Z by setting ln_p5z to .true. (and `ln_p4z` to `.false.`) and set the numbers to 40.
-
 
 For P5Z, in the file description with output at Xd frequency (`toto`), add:
 ```
