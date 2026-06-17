@@ -170,6 +170,23 @@ cd EXP_P4Z
 ln -sf nemo-5.0/cfgs/BGC_DEMO/BLD/bin/nemo.exe nemo
 ```
 
+>>> what Katherine did:
+Followd steps in basics tutorial to make changes to iodef:
+```
+  <context id="xios" >
+      <variable_definition>
+          <variable id="info_level"                type="int">10</variable>
+          <variable id="using_server"              type="bool">true</variable>
+          <variable id="oasis_codes_id"            type="string" >oceanx</variable>
+      </variable_definition>
+  </context>
+```
+Copy across xios_server.exe
+
+link BGC_DEMO/BLD/bin/nemo.exe nemo
+
+Submit job and it fails :(
+
 - 
 
 The model runs over the full global ocean for one year (1948) with a timestep of `5400s` and outputs at a 7-day time frequency. When the model has finished, it will output a file `ORCA2_7d_19480101_19481231_ptrc_T.nc` with the concentrations for each phyto- and zooplankton.
