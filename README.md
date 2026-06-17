@@ -74,7 +74,9 @@ You should then create two additional directories `EXP_P4Z` and `EXP_P5Z`, where
 
 ```
 cp PATH_to_BGC_DEMO_FORCINGS/namelist_*cfg EXP_P4Z/.
+cp PATH_to_BGC_DEMO_FORCINGS/file_def_nemo_pisces.xml EXP_P4Z/.
 cp PATH_to_BGC_DEMO_FORCINGS/namelist_*cfg EXP_P5Z/.
+cp PATH_to_BGC_DEMO_FORCINGS/file_def_nemo_pisces.xml EXP_P5Z/.
 ```
 
 >>>>> ADD a paragraph on namelist management.
