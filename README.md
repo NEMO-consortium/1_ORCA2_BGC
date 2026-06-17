@@ -70,18 +70,19 @@ You need to go in your `BGC_DEMO` directory:
 
 You should then create two additional directories `EXP_P4Z` and `EXP_P5Z`, where we will run each configuration of PISCES. Copy the files from `BGC_DEMO_FILES` into each directory, and then copy the files specific to each configuration:
 
-TO BE UPDATED => new zip with only the namelist*_cfg that are empty
+>>>>> TO BE UPDATED => new zip with only the namelist*_cfg that are empty
 
 ```
 cp PATH_to_BGC_DEMO_FORCINGS/namelist_*cfg EXP_P4Z/.
 cp PATH_to_BGC_DEMO_FORCINGS/namelist_*cfg EXP_P5Z/.
 ```
 
-- ADD a paragraph on namelist management.
+>>>>> ADD a paragraph on namelist management.
 
-The version of model to use is defined in the namelist. We note here the main differences between the two configurations. 
+The version of model to use is defined in the namelist. We explain here how to activate the different options between the two configurations. 
 
-- P4Z: To activate PISCES (P4Z) set in `ln_p4z` to `.true.` in P4Z `namelist_pisces_cfg`:
+- PISCES model (P4Z):
+To activate PISCES (P4Z) set `ln_p4z` to `.true.` in P4Z `namelist_pisces_cfg` by replacing this empty block as follows:
 ```
 !-----------------------------------------------------------------------
 &nampismod     !  Model used 
@@ -90,7 +91,7 @@ The version of model to use is defined in the namelist. We note here the main di
   ln_p4z      = .true.       !  PISCES model used
   ln_p5z      = .false.      !  PISCES QUOTA model used
 ```
-and we set the tracers for the run in `namelist_top_cfg`. P4Z uses 24 tracers:
+and set the number of tracers to use to 24 for the run in `namelist_top_cfg` by replacing the empty block as follows:
 ```
 !-----------------------------------------------------------------------
 &namtrc          !   tracers definition
@@ -98,20 +99,7 @@ and we set the tracers for the run in `namelist_top_cfg`. P4Z uses 24 tracers:
    jp_bgc        =  24
 ```
 
-
-- Similar things to activate PISCES QUOTA in P5Z, set ln_p5z to .true.
-
-and we set the tracers for the run in `namelist_top_cfg`. P5Z has 40 tracers:
-```
-!-----------------------------------------------------------------------
-&namtrc          !   tracers definition
-!-----------------------------------------------------------------------
-   jp_bgc        =  40
-```
-
-Finally, we set the variables to be output in `file_def_nemo-pisces.xml`:
-
-For P4Z, in the file description with output at Xd frequency (`toto`), add:
+Finally, we need to add extra outputs in `file_def_nemo-pisces.xml`. In the file description with output at Xd frequency (`toto`), add:
 ```
   <!-- ln_p4z variables -->
   <field field_ref="PHY"                             />
@@ -119,6 +107,11 @@ For P4Z, in the file description with output at Xd frequency (`toto`), add:
   <field field_ref="ZOO"                             />
   <field field_ref="ZOO2"                            /> 
 ```
+
+- PISCES QUOTA model (P5Z)
+Similarly activate in EXP_P5Z by setting ln_p5z to .true. (and `ln_p4z` to `.false.`) and set the numbers to 40.
+
+
 For P5Z, in the file description with output at Xd frequency (`toto`), add:
 ```
   <!-- ln_p5z variables -->
