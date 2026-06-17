@@ -69,15 +69,19 @@ You need to go in your `BGC_DEMO` directory:
 ```cd cfgs/BGC_DEMO```
 
 You should then create two additional directories `EXP_P4Z` and `EXP_P5Z`, where we will run each configuration of PISCES. Copy the files from `BGC_DEMO_FILES` into each directory, and then copy the files specific to each configuration:
-```
-cp -r PATH_to_BGC_DEMO_FORCINGS/PISCES_FILES/* EXP_P4Z/.
-cp -r PATH_to_BGC_DEMO_FORCINGS/P4Z_FILES/* EXP_P4Z/.
 
-cp -r PATH_to_BGC_DEMO_FORCINGS/PISCES_FILES/* EXP_P5Z/.
-cp -r PATH_to_BGC_DEMO_FORCINGS/P5Z_FILES/* EXP_P5Z/.
+TO BE UPDATED => new zip with only the namelist*_cfg that are empty
+
+```
+cp PATH_to_BGC_DEMO_FORCINGS/namelist_*cfg EXP_P4Z/.
+cp PATH_to_BGC_DEMO_FORCINGS/namelist_*cfg EXP_P5Z/.
 ```
 
-We note here the main differences between the two configurations. The version of model to use is set in `namelist_pisces_ref`:
+- ADD a paragraph on namelist management.
+
+The version of model to use is defined in the namelist. We note here the main differences between the two configurations. 
+
+- P4Z: To activate PISCES (P4Z) set in `ln_p4z` to `.true.` in P4Z `namelist_pisces_cfg`:
 ```
 !-----------------------------------------------------------------------
 &nampismod     !  Model used 
@@ -86,21 +90,37 @@ We note here the main differences between the two configurations. The version of
   ln_p4z      = .true.       !  PISCES model used
   ln_p5z      = .false.      !  PISCES QUOTA model used
 ```
-and we set the tracers for the run in `namelist_top_ref` and `namelist_top_cfg`. P4Z uses 24 tracers, while P5Z has 40 tracers:
+and we set the tracers for the run in `namelist_top_cfg`. P4Z uses 24 tracers:
+```
+!-----------------------------------------------------------------------
+&namtrc          !   tracers definition
+!-----------------------------------------------------------------------
+   jp_bgc        =  24
+```
+
+
+- Similar things to activate PISCES QUOTA in P5Z, set ln_p5z to .true.
+
+and we set the tracers for the run in `namelist_top_cfg`. P5Z has 40 tracers:
 ```
 !-----------------------------------------------------------------------
 &namtrc          !   tracers definition
 !-----------------------------------------------------------------------
    jp_bgc        =  40
 ```
+
 Finally, we set the variables to be output in `file_def_nemo-pisces.xml`:
+
+For P4Z, in the file description with output at Xd frequency (`toto`), add:
 ```
   <!-- ln_p4z variables -->
   <field field_ref="PHY"                             />
   <field field_ref="PHY2"                            />
   <field field_ref="ZOO"                             />
   <field field_ref="ZOO2"                            /> 
-
+```
+For P5Z, in the file description with output at Xd frequency (`toto`), add:
+```
   <!-- ln_p5z variables -->
   <field field_ref="PHY"                             />
   <field field_ref="PHY2"                            />
