@@ -33,7 +33,6 @@ The following dependencies are required for this demonstrator (in addition to th
 ### Provided files
 
 To be able to run the demonstrator, the directory `PISCES_FILES` has the `namelist` reference and configuration files needed for running PISCES. The directories `P4Z_FILES` and `P5Z_FILES` also include the following files specific to each configuration:
-* `namelist_pisces_ref` set to run the specific configuration
 * `namelist_top_cfg` with the specific parameter values for each configuration
 * `file_def_nemo_pisces.xml` with the required variables for each reference run
 
@@ -45,6 +44,17 @@ We also include the following files for post-processing of the outputs in the di
 * A python script `summary.py` to generate a global average summary of each plankton type for comparison
 
 In your work directory, create the directory `BGC_DEMO_FORCINGS` and download the files described above either from the Github repositry using git clone or from the corresponding Zenodo directory using wget.
+
+In addition to these files, our demonstrator uses the `ORCA2_ICE_v5.0.0.tar.gz` and `ORCA2_INPUTS_PISCES_v5.0.0.tar.gz` inputfiles, which can be found [here](https://gws-access.jasmin.ac.uk/public/nemo/sette_inputs/). These files should be downloaded with wget:
+```
+wget https://gws-access.jasmin.ac.uk/public/nemo/sette_inputs/extras/ORCA2_INPUTS_PISCES_v5.0.0.tar.gz ./
+wget https://gws-access.jasmin.ac.uk/public/nemo/sette_inputs/r5.0.0/ORCA2_ICE_v5.0.0.tar.gz ./
+```
+then untar those files with:
+```
+tar -xzvf ORCA2_ICE_v5.0.0.tar.gz
+tar -xzvf ORCA2_INPUTS_PISCES_v5.0.0.tar.gz
+```
 
 ### Installing
 
@@ -76,6 +86,14 @@ cp PATH_to_BGC_DEMO_FORCINGS/* EXP_P5Z/.
 ```
 
 Then for `EXP_P4Z` experiment, you need to rename `namelist_top_P4Z` to `namelist_top_cfg`, and for `EXP_P5Z` experiment, you need to rename `namelist_top_P5Z` to `namelist_top_cfg`.
+
+Finally, link all the netcdf forcing files into both experiment directories.
+```
+cd EXP_P4Z/
+ln -sf PATH_to_ORCA2_ICE_v5.0.0/* .
+ln -sf PATH_to_ORCA2_INPUTS_PISCES_v5.0.0/* .
+cd ..
+```
 
 >>>>> ADD a paragraph on namelist management. <<<<<<
 
