@@ -6,7 +6,6 @@ This test case provides a demonstration of PISCES, the biogeochemical (BGC) mode
 
 This demonstrator helps to educate new users of NEMO interested in running with BGC on the changes necessary to run the different configurations of PISCES. Comparison of the outputs from each run also allows to explore the effect of having a higher complexity model (through the additional phytoplankton included within PISCES QUOTA) and the impact this has on the dominance of each plankton type.
 
-
 ## Background
 
 PISCES is a biogeochemical model that simulates marine biological productivity and describes the biogeochemical cycles of carbon and five nutrients (nitrates, ammonium, phosphate, silicate, and iron). The model represents four living pools: two phytoplankton size classes (nanophytoplankton and diatoms) and two zooplankton size classes (microzooplankton and mesozooplankton), and three non-living compartments: semi-labile dissolved organic matter, and small and big sinking particles. Nutrients are supplied to the ocean from three sources: atmospheric dust, rivers, and sediment, and phytoplankton growth is limited by the availability of each nutrient.
@@ -63,17 +62,16 @@ This demonstrator is based on the [ORCA2_ICE_PISCES](https://sites.nemo-ocean.io
 >>>>> STOP Here, already mentioned the files to download into a separate forcings folder. 
 
 
-In your work directory (which we will refer to as simply `$WORK`), create the directory `BGC_DEMO_FORCINGS` and clone all the forcing files needed to run this demonstrator
+You need to go in your `BGC_DEMO` directory:
+```cd cfgs/BGC_DEMO```
 
-https://github.com/NEMO-consortium/1_ORCA2_BGC.git
-
-. You should then create two additional directories `$WORK/BGC_DEMO_RUN/P4Z` and `$WORK/BGC_DEMO_RUN/P5Z`, where we will run each configuration of PISCES. Copy the files from `BGC_DEMO_FILES` into each directory, and then copy the files specific to each configuration:
+You should then create two additional directories `EXP_P4Z` and `EXP_P5Z`, where we will run each configuration of PISCES. Copy the files from `BGC_DEMO_FILES` into each directory, and then copy the files specific to each configuration:
 ```
-cp BGC_DEMO/PISCES_FILES/* $WORK/BGC_DEMO_RUN/P4Z/
-cp BGC_DEMO/P4Z_FILES/* $WORK/BGC_DEMO_RUN/P4Z/
+ln -sf PATH_to_BGC_DEMO_FORCINGS/PISCES_FILES/* EXP_P4Z/.
+ln -sf PATH_to_BGC_DEMO_FORCINGS/P4Z_FILES/* EXP_P4Z/.
 
-cp BGC_DEMO/PISCES_FILES/* $WORK/BGC_DEMO_RUN/P5Z/
-cp BGC_DEMO/P5Z_FILES/* $WORK/BGC_DEMO_RUN/P5Z/
+ln -sf PATH_to_BGC_DEMO_FORCINGS/PISCES_FILES/* EXP_P5Z/.
+ln -sf PATH_to_BGC_DEMO_FORCINGS/P5Z_FILES/* EXP_P5Z/.
 ```
 
 We note here the main differences between the two configurations. The version of model to use is set in `namelist_pisces_ref`:
