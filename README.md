@@ -126,13 +126,17 @@ Similarly activate in EXP_P5Z by setting ln_p5z to .true. (and `ln_p4z` to `.fal
 
 For P5Z, in the file description with output at Xd frequency (`toto`), add:
 ```
-  <!-- ln_p5z variables -->
-  <field field_ref="PHY"                             />
-  <field field_ref="PHY2"                            />
-  <field field_ref="PIC"                             />
-  <field field_ref="ZOO"                             />
-  <field field_ref="ZOO2"                            /> 
-```
+   <file_group id="7d"  output_freq="7d"  output_level="10" enabled=".TRUE.">  <!-- 7d files -->
+     <file id="file1" name_suffix="_ptrc_T" description="pisces sms variables" >
+       <!-- ln_p5z variables -->
+       <field field_ref="PHY"                             />
+       <field field_ref="PHY2"                            />
+       <field field_ref="PIC"                             />
+       <field field_ref="ZOO"                             />
+       <field field_ref="ZOO2"                            />
+     </file>
+   </file_group>
+"```
 
 Our demonstrator uses the `ORCA2_ICE_v5.0.0.tar.gz` and `ORCA2_INPUTS_PISCES_v5.0.0.tar.gz` inputfiles, which can be found [here](https://gws-access.jasmin.ac.uk/public/nemo/sette_inputs/). These files should be downloaded and copied into each run directory.
 
