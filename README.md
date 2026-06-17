@@ -94,7 +94,7 @@ To activate PISCES (P4Z) set `ln_p4z` to `.true.` in P4Z `namelist_pisces_cfg` b
 /
 !-----------------------------------------------------------------------
 ```
-and set the number of tracers to use to 24 for the run in `namelist_top_cfg` by replacing the empty block as follows:
+and set the number of tracers to use to *24* for the run in `namelist_top_cfg` by replacing the empty block as follows:
 ```
 !-----------------------------------------------------------------------
 &namtrc          !   tracers definition
@@ -123,7 +123,7 @@ Take care of the `/>` at the end of the first line and `</file_group>` to close 
 
 **PISCES QUOTA model (P5Z)**
 
-Similarly activate in EXP_P5Z by setting ln_p5z to .true. (and `ln_p4z` to `.false.`) and set the numbers to 40.
+Similarly activate in EXP_P5Z by setting `ln_p5z` to `.true.` (and `ln_p4z` to `.false.`) and set the numbers to *40*.
 
 For P5Z, as for P4Z, we need to add extra outputs in `file_def_nemo-pisces.xml`. In the file description with output at 7d frequency. To do this, you need to replace:
 ```
