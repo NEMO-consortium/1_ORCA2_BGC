@@ -86,6 +86,7 @@ Then for `EXP_P4Z` experiments, you need to rename `namelist_top_P4Z` to `nameli
 The version of model to use is defined in the namelist. We explain here how to activate the different options between the two configurations. 
 
 - PISCES model (P4Z):
+
 To activate PISCES (P4Z) set `ln_p4z` to `.true.` in P4Z `namelist_pisces_cfg` by replacing this empty block as follows:
 ```
 !-----------------------------------------------------------------------
@@ -122,9 +123,10 @@ by:
 Take care of the `/>` at the end of the first line and `</file_group>` to close the file group.
 
 - PISCES QUOTA model (P5Z)
+
 Similarly activate in EXP_P5Z by setting ln_p5z to .true. (and `ln_p4z` to `.false.`) and set the numbers to 40.
 
-For P5Z, in the file description with output at Xd frequency (`toto`), add:
+For P5Z, as for P4Z, in the file description with output at Xd frequency (`toto`), add:
 ```
    <file_group id="7d"  output_freq="7d"  output_level="10" enabled=".TRUE.">  <!-- 7d files -->
      <file id="file1" name_suffix="_ptrc_T" description="pisces sms variables" >
@@ -136,7 +138,7 @@ For P5Z, in the file description with output at Xd frequency (`toto`), add:
        <field field_ref="ZOO2"                            />
      </file>
    </file_group>
-"```
+```
 
 Our demonstrator uses the `ORCA2_ICE_v5.0.0.tar.gz` and `ORCA2_INPUTS_PISCES_v5.0.0.tar.gz` inputfiles, which can be found [here](https://gws-access.jasmin.ac.uk/public/nemo/sette_inputs/). These files should be downloaded and copied into each run directory.
 
