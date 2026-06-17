@@ -161,9 +161,7 @@ by:
    </file_group>
 ```
 
-Our demonstrator uses the `ORCA2_ICE_v5.0.0.tar.gz` and `ORCA2_INPUTS_PISCES_v5.0.0.tar.gz` inputfiles, which can be found [here](https://gws-access.jasmin.ac.uk/public/nemo/sette_inputs/). These files should be downloaded and copied into each run directory.
-
-To run the model, copy the executable into each run directory and then submit:
+Now you can run the model. To run the model, copy the executable into each run directory and then submit:
 ```
 cp nemo-5.0/cfgs/BGC_DEMO/BLD/bin/nemo.exe .
 ./nemo.exe
