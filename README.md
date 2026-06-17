@@ -73,11 +73,13 @@ You should then create two additional directories `EXP_P4Z` and `EXP_P5Z`, where
 >>>>> TO BE UPDATED => new zip with only the namelist*_cfg that are empty
 
 ```
-cp PATH_to_BGC_DEMO_FORCINGS/namelist_*cfg EXP_P4Z/.
+cp PATH_to_BGC_DEMO_FORCINGS/namelist_* EXP_P4Z/.
 cp PATH_to_BGC_DEMO_FORCINGS/file_def_nemo_pisces.xml EXP_P4Z/.
-cp PATH_to_BGC_DEMO_FORCINGS/namelist_*cfg EXP_P5Z/.
+cp PATH_to_BGC_DEMO_FORCINGS/namelist_* EXP_P5Z/.
 cp PATH_to_BGC_DEMO_FORCINGS/file_def_nemo_pisces.xml EXP_P5Z/.
 ```
+
+Then for `EXP_P4Z` experiments, you need to rename `namelist_top_P4Z` to `namelist_top_cfg`, and for `EXP_P5Z` experiments, you need to rename `namelist_top_P5Z` to `namelist_top_cfg`.
 
 >>>>> ADD a paragraph on namelist management.
 
@@ -101,7 +103,7 @@ and set the number of tracers to use to 24 for the run in `namelist_top_cfg` by 
    jp_bgc        =  24
 ```
 
-Finally, we need to add extra outputs in `file_def_nemo-pisces.xml`. In the file description with output at 7d frequency. To do this, you need to replace:
+Then, we need to add extra outputs in `file_def_nemo-pisces.xml`. In the file description with output at 7d frequency. To do this, you need to replace:
 ```
    <file_group id="7d"  output_freq="7d"  output_level="10" enabled=".TRUE."/>  <!-- 7d files -->
 ```
