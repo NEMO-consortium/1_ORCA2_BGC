@@ -182,7 +182,7 @@ by:
 
 Now you can run each model configuration. To do so, follow the steps described for copying across xios server, editing iodef.xml and building and runing the job script [here](https://github.com/NEMO-consortium/0_NEMO_basics/blob/main/Turorial1.md#3-how-to-run-nemo-502). 
 
-To go faster you can ask for more than 4 cores in your job script, we recommend 32 or 64 depening on your HPC and your ressources available. To do so, modify the ressources asked in the header and in the `mpirun` (or equivalent) command.
+To go faster you can ask for more than 4 cores in your job script, we recommend to run on 32 (31 for NEMO and 1 for XIOS) or 64 (63 for NEMO and 1 for XIOS) depending on your HPC and your ressources available. To do so, modify the ressources asked in the header and in the `mpirun` (or equivalent) command.
 
 - 
 
