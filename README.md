@@ -182,16 +182,17 @@ by:
 
 Now you can run each model configuration. To do so, follow the steps described for copying across xios server, editing iodef.xml and building and runing the job script [here](https://github.com/NEMO-consortium/0_NEMO_basics/blob/main/Turorial1.md#3-how-to-run-nemo-502). 
 
-To go faster you can ask for more than 4 cores in your job script, we recommend to run on 32 (31 for NEMO and 1 for XIOS) or 64 (63 for NEMO and 1 for XIOS) depending on your HPC and your ressources available. To do so, modify the ressources asked in the header and in the `mpirun` (or equivalent) command.
+To go faster you can ask for more than 4 cores in your job script. We recommend to run on 32 (31 for NEMO and 1 for XIOS) or 64 (63 for NEMO and 1 for XIOS) depending on your HPC and your ressources available. To do so, modify the ressources asked in the header and in the `mpirun` (or equivalent) command.
 
 - 
 
 The model runs over the full global ocean for one year (1948) with a timestep of `5400s` and outputs at a 7-day time frequency. When the model has finished, it will output a file `ORCA2_7d_19480101_19481231_ptrc_T.nc` with the concentrations for each phyto- and zooplankton.
 
-
 ## Results
 
-We describe here the steps for running the scripts to visualise the difference in dominant species between each configuration of PISCES. The first step is to copy the scripts from the directory `SCRIPTS` into your `$WORK/BGC_DEMO_RUN` directory. We then need to update the `models.csv` file to include the correct directory location for your `$WORK` directory.
+>>>>> STOP HERE
+
+We describe here the steps for running the scripts to visualise the difference in dominant species between each configuration of PISCES. The first step is to copy the scripts from the directory `SCRIPTS` into your `BGC_DEMO` directory. We then need to update the `models.csv` file to include the correct directory location for your `$WORK` directory.
 
 We run the comparison with the command `./compare.sh`, which will run a series of python scripts to:
 * calculate depth-averaged values for each phyto- and zooplankton
