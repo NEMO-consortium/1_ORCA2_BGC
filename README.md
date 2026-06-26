@@ -96,18 +96,21 @@ ln -sf PATH_to_ORCA2_INPUTS_PISCES_v5.0.0/* EXP_P5Z/.
 ```
 
 **Namelist management**
+
 We explain here how to manage the various namelists and activate the different options between the two configurations. 
 
-In NEMO there are 2 kind of namelist, the reference namelist (_ref) that contains default settings and the configuration one (_cfg) that contains user settings. In principle, one must not make changes in namelist_ref, it should remain pristine. Use namelist_cfg to poersonalise your changes. By doing so, NEMO will overwrite the default choices set in namelist_ref
+In NEMO there are 2 kind of namelist, the reference namelist (_ref) that contains default settings and the configuration one (_cfg) that contains user settings. In principle, one must not make changes in namelist_ref, it should remain pristine. Use namelist_cfg to personalise your changes. By doing so, NEMO will overwrite the default choices set in namelist_ref
 
 **Overwrite default restart setting**
+
 But default, NEMO look for a restart. To start from rest, we need to deactivate the reading of the restart file.
 
-Under `&namrun` in namelist, set the restart option to .false. false:
+Under `&namrun` in namelist, set the restart option to `.false.`:
 ```
 !-----------------------------------------------------------------------
 &namrun        !   parameters of the run
    ln_rstart   =  .false.   !  start from rest (F) or from a restart file (T)
+/
 !-----------------------------------------------------------------------
 ```
 The type of PISCES model to use is defined in the namelist. 
