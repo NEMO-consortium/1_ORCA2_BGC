@@ -95,9 +95,17 @@ ln -sf PATH_to_ORCA2_ICE_v5.0.0/* EXP_P5Z/.
 ln -sf PATH_to_ORCA2_INPUTS_PISCES_v5.0.0/* EXP_P5Z/.
 ```
 
->>>>> ADD a paragraph on namelist management. <<<<<<
+**Namelist management**
+We explain here how to manage the various namelists and activate the different options between the two configurations. 
 
-The version of model to use is defined in the namelist. We explain here how to activate the different options between the two configurations. 
+In NEMO there are 2 kind of namelist, the reference namelist (_ref) that contains default settings and the configuration one (_cfg) that contains user settings. In principle, one must not make changes in namelist_ref, it should remain pristine. Use namelist_cfg to poersonalise your changes. By doing so, NEMO will overwrite the default choices set in namelist_ref
+
+**Overwrite default restart setting**
+But default, NEMO look for a restart. To start from rest, we need to deactivate the reading of the restart file.
+
+Under `&namrun` in namelist ......
+
+The type of PISCES model to use is defined in the namelist. 
 
 **PISCES model (P4Z)**
 
@@ -160,34 +168,10 @@ by:
      </file>
    </file_group>
 ```
->>>> STOP HERE need to put instruction for iodef and xiosserver ...
->>>> 
-Now you can run the model. To run the model, link the executable into each run directory and then submit. Below the steps only for EXP_P4Z. Similar steps apply for EXP_P5Z.
 
-- First go in EXP_P4Z, link nemo, :
-```
-cd EXP_P4Z
-ln -sf nemo-5.0/cfgs/BGC_DEMO/BLD/bin/nemo.exe nemo
-```
+**Run the configuration**
 
->>> what Katherine did:
-Followd steps in basics tutorial to make changes to iodef:
-```
-  <context id="xios" >
-
-      <variable_definition>
-
-          <variable id="info_level"                type="int">10</variable>
-          <variable id="using_server"              type="bool">true</variable>
-          <variable id="using_oasis"               type="bool">false</variable>
-
-      </variable_definition>
-  </context>
-
-```
-Copy across xios_server.exe
-
-link BGC_DEMO/BLD/bin/nemo.exe nemo
+Now you can run each model configuration. To do so, follow the steps described for copying across xios server, editing iodef.xml and building and runing the job script [here](https://github.com/NEMO-consortium/0_NEMO_basics/blob/main/Turorial1.md#3-how-to-run-nemo-502). 
 
 Submit job and it fails :(
 
