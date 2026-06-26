@@ -103,8 +103,13 @@ In NEMO there are 2 kind of namelist, the reference namelist (_ref) that contain
 **Overwrite default restart setting**
 But default, NEMO look for a restart. To start from rest, we need to deactivate the reading of the restart file.
 
-Under `&namrun` in namelist ......
-
+Under `&namrun` in namelist, set the restart option to .false. false:
+```
+!-----------------------------------------------------------------------
+&namrun        !   parameters of the run
+   ln_rstart   =  .false.   !  start from rest (F) or from a restart file (T)
+!-----------------------------------------------------------------------
+```
 The type of PISCES model to use is defined in the namelist. 
 
 **PISCES model (P4Z)**
