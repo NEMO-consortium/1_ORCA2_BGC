@@ -101,15 +101,16 @@ We explain here how to manage the various namelists and activate the different o
 
 In NEMO there are 2 kind of namelist, the reference namelist (_ref) that contains default settings and the configuration one (_cfg) that contains user settings. In principle, one must not make changes in namelist_ref, it should remain pristine. Use namelist_cfg to personalise your changes. By doing so, NEMO will overwrite the default choices set in namelist_ref
 
-**Overwrite default restart setting**
+**Overwrite default run settings**
 
-But default, NEMO look for a restart. To start from rest, we need to deactivate the reading of the restart file.
+But default, NEMO looks for a restart file. To start from rest, we need to deactivate the reading of this restart file.
 
-Under `&namrun` in namelist, set the restart option to `.false.`:
+Under `&namrun` in namelist, set the restart option to `.false.`. We also suggest that you mask land points as this makes for more intuitive plots:
 ```
 !-----------------------------------------------------------------------
 &namrun        !   parameters of the run
    ln_rstart   =  .false.   !  start from rest (F) or from a restart file (T)
+   ln_mskland  = .true.   !  mask land points in NetCDF outputs
 /
 !-----------------------------------------------------------------------
 ```
